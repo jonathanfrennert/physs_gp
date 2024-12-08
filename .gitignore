@@ -1,0 +1,46 @@
+
+
+*.prof
+
+
+# Sdem temp files
+**/sdem_bin/**
+
+# R files to ignore
+.Rhistory
+
+# 'Helper' LaTeX files to ignore
+*.aux
+*.fdb_latexmk
+*.nav
+*.out
+*.snm
+*.gz
+*.toc
+*.pdfsync
+*.blg
+*.bbl
+*.log
+# Python related files to ignore
+*.pyc
+*.so  # Come when you build cython extensions
+# Don't track the OSX .DS_Store files
+*.DS_Store
+*.pickle
+*.ipynb_checkpoints
+
+#experiment manager tmp folders
+**/runs/
+**/omniboard/
+**/jobs/
+
+#checkpoints
+*.ckpt
+*.npz
+
+#datafiles
+*.csv
+*.pickle
+*.mat
+*.Rdata
+*.xlsx

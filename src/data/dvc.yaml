@@ -1,0 +1,85 @@
+stages:
+  prepare_pinn_ac:
+    cmd: 'cd pinn && sh ./download_ac.sh'
+    deps:
+      - ./pinn/download_ac.sh
+    outs:
+      - ./pinn/data/AC.mat:
+          persist: true
+
+  clean_pinn_ac:
+    cmd: 'cd pinn && python clean_ac.py'
+    deps:
+      - ./pinn/data/AC.mat
+    outs:
+      - ./pinn/data/AC.csv:
+          persist: true
+
+  prepare_pinn_ns:
+    cmd: 'cd pinn && sh ./download_ns.sh'
+    deps:
+      - ./pinn/download_ns.sh
+    outs:
+      - ./pinn/data/NS.mat:
+          persist: true
+
+  clean_pinn_ns:
+    cmd: 'cd pinn && python clean_ns.py'
+    deps:
+      - './pinn/data/NS.mat'
+      - './pinn/clean_ns.py'
+    outs:
+      - ./pinn/data/NS.csv:
+          persist: true
+
+  prepare_pendulum_1:
+    cmd: 'cd pendulum && python pendulum.py --g 1.0 --l 1.0 --dt 0.03 --b 0.2 --n 1000 --no-plot'
+    deps:
+      - ./pendulum/pendulum.py
+    outs:
+      - ./pendulum/data/pendulum_dt_0.03_g_1.0_l_1.0_b_0.2_n_1000.csv:
+          persist: true
+
+  prepare_magnetic:
+    cmd: 'cd magnetic && sh ./download.sh'
+    deps:
+      - ./magnetic/download.sh
+    outs:
+      - ./magnetic/data/:
+          persist: true
+
+  prepare_lorenz:
+    cmd: 'cd lorenz && python lorenz.py'
+    deps:
+      - ./lorenz/lorenz.py
+    outs:
+      - ./lorenz/data/lorenz.csv:
+          persist: true
+
+  prepare_lotka_volterra:
+    cmd: 'cd odes && python make_lv.py'
+    deps:
+      - ./odes/make_lv.py
+    outs:
+      - ./odes/data/lotka_volterra_alpha_0.5_beta_0.5_delta_1.0_gamma_0.5.csv:
+          persist: true
+
+  clean_laser:
+    cmd: 'cd laser && python clean.py'
+    deps:
+      - ./laser/clean.py
+      - ./laser/R4.x265.237.0001/
+    outs:
+      - ./laser/data/laser.csv:
+          persist: true
+
+  clean_helmholtz_laser:
+    cmd: 'cd helmholtz && python clean.py'
+    deps:
+      - ./helmholtz/clean.py
+      - ./helmholtz/laser_data_raw/
+    outs:
+      - ./helmholtz/data/laser_train.csv:
+          persist: true
+      - ./helmholtz/data/laser_test.csv:
+          persist: true

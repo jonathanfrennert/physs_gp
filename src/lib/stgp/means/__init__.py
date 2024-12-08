@@ -1,0 +1,2 @@
+from .mean import ZeroMean
+from .mean import DiffOpMean, SecondOrderDerivativeMean_1D, SecondOrderDerivativeMean_2D, SecondOrderSpaceFirstOrderTimeDerivativeMean_2D
