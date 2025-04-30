@@ -288,7 +288,7 @@ class NatGradTrainer(Trainer):
                 val = self.objective_fn()
                 epoch_arr.append(jnp.array(val).flatten())
             else:
-                epoch_arr.append(np.NaN)
+                epoch_arr.append(np.nan)
 
 
             if callback is not None:

@@ -13,7 +13,7 @@ from typing import List, Optional
 class _OutputMap(LinearTransform):
     def __init__(self, parent, mapping, data_y_index=None):
         self._parent = parent
-        self.latents = self.parent.latents
+        self.latents = self.parent
         self.mapping = np.array(mapping)
         self._output_dim = len(mapping)
         self.data_y_index = None

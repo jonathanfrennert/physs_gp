@@ -6,7 +6,7 @@ sys.path.append('../')
 
 import objax
 import jax
-from jax.config import config as jax_config
+from jax import config as jax_config
 jax_config.update("jax_enable_x64", True)
 jax_config.update('jax_disable_jit', False)
 
@@ -167,7 +167,7 @@ def add_colocation(config, X_pde, Y_pde, X_all):
 
     # add additional colocation points across the whole input spcae
     X_colocation = np.linspace(np.min(X_all), np.max(X_all), config['num_colocation'])[:, None]
-    Y_colocation = np.hstack([X_colocation * np.NaN, np.zeros_like(X_colocation)])
+    Y_colocation = np.hstack([X_colocation * np.nan, np.zeros_like(X_colocation)])
 
     X  = np.vstack([X_pde, X_colocation])
     Y  = np.vstack([Y_pde, Y_colocation])

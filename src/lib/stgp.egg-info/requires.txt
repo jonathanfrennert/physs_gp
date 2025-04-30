@@ -1,0 +1,12 @@
+objax@ git+https://github.com/google/objax.git#egg=sacred
+batchjax@ git+https://github.com/defaultobject/batchjax#egg=sacred
+chex
+tqdm
+black
+flake8
+flake8-docstrings
+bibtexparser
+pandas
+scikit-learn
+matplotlib
+pytest

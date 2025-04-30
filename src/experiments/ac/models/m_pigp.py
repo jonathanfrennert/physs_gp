@@ -136,7 +136,7 @@ def get_model(config, X, Y):
         X_colocation = create_spatial_grid(0.0, 1.0, -1.0, 1.0, config['num_colocation'][0], config['num_colocation'][1])
 
         Y_colocation = np.copy(X_colocation)*0.0
-        Y_colocation[:, 0] = np.NaN
+        Y_colocation[:, 0] = np.nan
 
         Y_pde = np.hstack([Y, Y*0.0])
 

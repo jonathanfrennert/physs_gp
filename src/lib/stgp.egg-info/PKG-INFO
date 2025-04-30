@@ -1,0 +1,32 @@
+Metadata-Version: 2.2
+Name: stgp
+Version: 0.0.1
+Summary: SpaTial GP (STGP) library in jax
+Home-page: N/A
+Author: anan
+Author-email: anon
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: objax@ git+https://github.com/google/objax.git#egg=sacred
+Requires-Dist: batchjax@ git+https://github.com/defaultobject/batchjax#egg=sacred
+Requires-Dist: chex
+Requires-Dist: tqdm
+Requires-Dist: black
+Requires-Dist: flake8
+Requires-Dist: flake8-docstrings
+Requires-Dist: bibtexparser
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Requires-Dist: pytest
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

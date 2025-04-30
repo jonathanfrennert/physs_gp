@@ -220,7 +220,7 @@ def get_minimal_time_groups(X, Y=None, verbose=True):
         D_ns = D_t.shape[0]
         # add dummy values
         X_to_add = Z_s[:(Ns-D_ns)]
-        Y_to_add = onp.zeros([X_to_add.shape[0], P])*onp.NaN
+        Y_to_add = onp.zeros([X_to_add.shape[0], P])*onp.nan
 
         # add time 
         X_to_add = onp.hstack([

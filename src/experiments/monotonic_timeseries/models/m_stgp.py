@@ -112,7 +112,7 @@ def add_colocation_points(config, X, Y):
     N_colocation = config['n_colocation']
     X_colocation = np.linspace(np.min(X), np.max(X), N_colocation)[:, None]
     Y_colocation = np.ones([N_colocation, Y.shape[1]])
-    Y_colocation[:, 0] = np.NaN
+    Y_colocation[:, 0] = np.nan
 
     X = np.vstack([X, X_colocation])
     Y = np.vstack([Y, Y_colocation])

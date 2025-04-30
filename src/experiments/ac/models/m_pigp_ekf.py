@@ -103,7 +103,7 @@ def get_config():
 def add_colocation_points(config, X, Y):
     X_colocation = create_spatial_grid(0.0, 1.0, -1.0, 1.0, config['num_colocation'][0], config['num_colocation'][1])
 
-    Y_colocation = np.ones([X_colocation.shape[0], Y.shape[1]])*np.NaN
+    Y_colocation = np.ones([X_colocation.shape[0], Y.shape[1]])*np.nan
 
     if X is None:
         X = X_colocation
@@ -182,7 +182,7 @@ def get_model(config, X, Y):
             m_init = m_init.reshape([1, -1]).astype(np.float64)
 
             boundary_conditions = m_init
-            boundary_conditions = np.vstack([boundary_conditions, np.ones([Nt-1, boundary_conditions.shape[1]])*np.NaN])[..., None]
+            boundary_conditions = np.vstack([boundary_conditions, np.ones([Nt-1, boundary_conditions.shape[1]])*np.nan])[..., None]
         else:
             print('No Boundary Conditions')
             boundary_conditions = None
