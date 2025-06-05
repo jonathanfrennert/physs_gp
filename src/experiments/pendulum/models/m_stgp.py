@@ -63,7 +63,7 @@ def get_config():
                 'inference': ['vi'],
                 'M': ['none'],
                 'type': ['sde'],
-                'kernel': ['scaled-matern72'],
+                'kernel': ['scaled-matern72', 'rbf'],
                 'ell_samples': [100],
                 'num_colocation': [10, 100, 500, 1000],
                 'parallel': ['auto'],
@@ -229,18 +229,25 @@ def main(config, train_flag=True, restore=False, overwrite=None, return_model = 
 
             if config['inference'] == 'batch':
                 # TODO: log training time
-                lc, _ = LikNoiseSplitTrainer(m, lambda: LBFGS(m), 0.4).train(None, config['max_iters'], callback=progress_bar_callback(config['max_iters']))
+                # lc, _ = LikNoiseSplitTrainer(m, lambda: LBFGS(m), 0.4).train(None, config['max_iters'], callback=progress_bar_callback(config['max_iters']))
+                lc, _ = LikNoiseSplitTrainer(m, lambda: LBFGS(m), 0.0).train(None, config['max_iters'], callback=progress_bar_callback(config['max_iters']))
 
             elif config['inference'] == 'vi':
+                # lc, _ = LikNoiseSplitTrainer(
+                #     m,
+                #     lambda: VB_NG_ADAM(m, enforce_psd_type='laplace_gauss_newton_delta_u'),
+                #     0.4,
+                # ).train([0.01, 0.1], [config['max_iters'], [1, 1]], callback=progress_bar_callback(config['max_iters']))
                 lc, _ = LikNoiseSplitTrainer(
                     m,
                     lambda: VB_NG_ADAM(m, enforce_psd_type='laplace_gauss_newton_delta_u'),
-                    0.4,
+                    0.0,
                 ).train([0.01, 0.1], [config['max_iters'], [1, 1]], callback=progress_bar_callback(config['max_iters']))
 
 
             else:
-                lc, _ = LikNoiseSplitTrainer(m, lambda: ADAM(m), 0.4).train(0.01, config['max_iters'], callback=progress_bar_callback(config['max_iters']))
+                # lc, _ = LikNoiseSplitTrainer(m, lambda: ADAM(m), 0.4).train(0.01, config['max_iters'], callback=progress_bar_callback(config['max_iters']))
+                lc, _ = LikNoiseSplitTrainer(m, lambda: ADAM(m), 0.0).train(0.01, config['max_iters'], callback=progress_bar_callback(config['max_iters']))
 
 
         except RuntimeError as e:
