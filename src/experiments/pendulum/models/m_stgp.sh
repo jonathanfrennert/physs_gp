@@ -1,4 +1,4 @@
-source ~/miniconda3/miniconda3.sh
+source ~/miniconda3/bin/activate
 conda activate physs_gp
 
 cd ~/git/PHYSS_GP/src/experiments/pendulum/models
