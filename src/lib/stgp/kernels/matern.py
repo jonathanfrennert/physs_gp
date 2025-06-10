@@ -3,6 +3,9 @@ import chex
 import jax
 import jax.numpy as np
 
+from jax import jit
+from functools import partial
+
 from . import StationaryKernel, StationaryVarianceKernel, MarkovKernel
 from .ss_utils import matern32_temporal_expm, matern32_temporal_state_space_rep
 
@@ -324,7 +327,8 @@ class ScaledMatern72(StationaryVarianceKernel, MarkovKernel):
                               lam2 * (4.0 * dtlam - 6.0 - 0.5 * dtlam2),      lam * (1.5 * dtlam - 3.0 - dtlam2 / 6.0)]])
                + np.eye(4))
         return A
-
+    
+    @partial(jit, static_argnums=(0))
     def _K_scaler_with_var(self, x1, x2, lengthscale, variance):
         """
         r = |X1 - X2|/l
